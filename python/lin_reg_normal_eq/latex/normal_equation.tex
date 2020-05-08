@@ -1,0 +1,406 @@
+%
+%
+%
+% ██╗    ██╗ ██████╗ ██╗████████╗███████╗██╗  ██╗
+% ██║    ██║██╔═══██╗██║╚══██╔══╝██╔════╝██║ ██╔╝
+% ██║ █╗ ██║██║   ██║██║   ██║   █████╗  █████╔╝
+% ██║███╗██║██║   ██║██║   ██║   ██╔══╝  ██╔═██╗
+% ╚███╔███╔╝╚██████╔╝██║   ██║   ███████╗██║  ██╗
+%  ╚══╝╚══╝  ╚═════╝ ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+%
+%
+%
+% .##.......####...######..######..##..##.
+% .##......##..##....##....##.......####..
+% .##......######....##....####......##...
+% .##......##..##....##....##.......####..
+% .######..##..##....##....######..##..##.
+%
+%
+%
+\documentclass[10pt,american]{scrartcl}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1cm,bmargin=1cm,lmargin=1cm,rmargin=1cm}
+\pagestyle{empty}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage{microtype}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfauthor={Marcio Woitek}}
+\makeatletter
+\newlength{\lyxlabelwidth}
+\usepackage[none]{hyphenat}
+\makeatother
+
+\begin{document}
+
+\section*{Normal Equation}
+
+\uline{Notation and Definition of the Problem}
+\begin{itemize}
+\item Here we use Machine Learning terminology.
+\item Let $n$ and $m$ be non-zero natural numbers.
+\item The general case has $n$ features, i.e., $n$ independent variables
+$x_{1},\ldots,x_{n}$.
+\item As usual, we define $x_{0}\equiv1$.
+\item These quantities are written as components of the $\left(n+1\right)$-dimensional
+column vector $\mathbf{x}$:
+\[
+\mathbf{x}=\begin{bmatrix}x_{0}\\
+x_{1}\\
+\vdots\\
+x_{n}
+\end{bmatrix}.
+\]
+\item The corresponding dependent variable is denoted by $y$.
+\item A training example is represented by the ordered pair $\left(\mathbf{x},y\right)$.
+\item In general, we have $m$ training examples $\left(\mathbf{x}^{\left(1\right)},y^{\left(1\right)}\right),\ldots,\left(\mathbf{x}^{\left(m\right)},y^{\left(m\right)}\right)$.
+\item Next, we use the column vectors $\mathbf{x}^{\left(i\right)}$ $\left(i=1,\ldots,m\right)$
+to define the $m$ by $n+1$ design matrix $X$.
+\item By definition, the $i$-th row of $X$ is the row vector $\left(\mathbf{x}^{\left(i\right)}\right)^{T}$:
+\[
+X\equiv\begin{bmatrix}\left(\mathbf{x}^{\left(1\right)}\right)^{T}\\
+\vdots\\
+\left(\mathbf{x}^{\left(m\right)}\right)^{T}
+\end{bmatrix}=\begin{bmatrix}x_{0}^{\left(1\right)} & x_{1}^{\left(1\right)} & \cdots & x_{n}^{\left(1\right)}\\
+\vdots & \vdots & \vdots & \vdots\\
+x_{0}^{\left(m\right)} & x_{1}^{\left(m\right)} & \cdots & x_{n}^{\left(m\right)}
+\end{bmatrix}.
+\]
+\item We write the values of the variable $y$ (observed values) as components
+of the $m$-dimensional column vector $\mathbf{y}$:
+\[
+\mathbf{y}=\begin{bmatrix}y^{\left(1\right)}\\
+\vdots\\
+y^{\left(m\right)}
+\end{bmatrix}.
+\]
+\item Assumption: The relation between the dependent variable and the independent
+ones is linear.
+\item In other words, the observed value is a linear function of the features.
+\item This function has $n+1$ coefficients $\theta_{0},\theta_{1},\ldots,\theta_{n}$.
+\item They are written as components of the $\left(n+1\right)$-dimensional
+column vector $\boldsymbol{\theta}$:
+\[
+\boldsymbol{\theta}=\begin{bmatrix}\theta_{0}\\
+\theta_{1}\\
+\vdots\\
+\theta_{n}
+\end{bmatrix}.
+\]
+\item Then the mathematical form of our hypothesis is
+\[
+y=h_{\boldsymbol{\theta}}\left(\mathbf{x}\right)=\theta_{0}x_{0}+\theta_{1}x_{1}+\ldots+\theta_{n}x_{n}=\boldsymbol{\theta}^{T}\mathbf{x}.
+\]
+\item An alternative equation for $y$ is
+\[
+y=\sum_{j=0}^{n}\theta_{j}x_{j}.
+\]
+\item If this assumption is correct, the observed values can be expressed
+as
+\[
+y^{\left(i\right)}=\boldsymbol{\theta}^{T}\mathbf{x}^{\left(i\right)}=\sum_{j=0}^{n}\theta_{j}x_{j}^{\left(i\right)},\quad i=1,\ldots,m.
+\]
+\item We continue by writing the last sum in terms of the design matrix
+$X$.
+\item To do so, we consider the $i$-th component of the column vector $X\boldsymbol{\theta}$:
+\[
+\left(X\boldsymbol{\theta}\right)^{\left(i\right)}=\sum_{j=0}^{n}X_{ij}\theta_{j}=\sum_{j=0}^{n}\theta_{j}x_{j}^{\left(i\right)}=y^{\left(i\right)}.
+\]
+\item Therefore, the matrix version of our hypothesis is
+\[
+\mathbf{y}=X\boldsymbol{\theta}.
+\]
+\item However, in many situations, this assumption is not entirely correct.
+\item Nevertheless, it can be used as an approximation.
+\item In other words, the observed values can be approximately described
+by a linear function of the features.
+\item In these cases, there are errors (also called residuals) $\epsilon^{\left(i\right)}$:
+\[
+\epsilon^{\left(i\right)}=y^{\left(i\right)}-\left(X\boldsymbol{\theta}\right)^{\left(i\right)}.
+\]
+\item This equation can be put in matrix form if we introduce the $m$-dimensional
+column vector $\boldsymbol{\epsilon}$:
+\[
+\boldsymbol{\epsilon}=\begin{bmatrix}\epsilon^{\left(1\right)}\\
+\vdots\\
+\epsilon^{\left(m\right)}
+\end{bmatrix}.
+\]
+\item This definition allows us to write the formula for the residuals as
+\[
+\boldsymbol{\epsilon}=\mathbf{y}-X\boldsymbol{\theta}.
+\]
+\item Finally, we can present the statement of the problem we shall solve:\\Suppose
+we have a set of training examples that are approximately described
+by a linear function $h_{\boldsymbol{\theta}}$.\\Determine the function
+$h_{\boldsymbol{\theta}}$ corresponding to the best approximation.
+\item This is the so-called linear regression problem.
+\item To continue, we have to state it more precisely.
+\item Our goal is to find a linear function, which is characterized by its
+coefficients $\boldsymbol{\theta}$.
+\item Then solving the problem means finding a specific vector $\boldsymbol{\theta}$.
+\item This is the vector that minimizes the residuals.
+\end{itemize}
+\uline{Cost Function}
+\begin{itemize}
+\item To proceed, we define the so-called cost function $J\left(\boldsymbol{\theta}\right)$:
+\[
+J\left(\boldsymbol{\theta}\right)\equiv\frac{1}{2m}\left|\boldsymbol{\epsilon}\right|^{2}=\frac{1}{2m}\left|\mathbf{y}-X\boldsymbol{\theta}\right|^{2}.
+\]
+\item By minimizing the residuals, we obtain the minimum value of $\left|\boldsymbol{\epsilon}\right|$.
+\item In turn, this gives us the minimum of the cost function.
+\item Hence, we can solve our problem by minimizing $J\left(\boldsymbol{\theta}\right)$.
+\end{itemize}
+\uline{Solution to the Problem: Derivation of the Normal Equation}
+\begin{itemize}
+\item To minimize $J\left(\boldsymbol{\theta}\right)$, we have to determine
+the vector $\boldsymbol{\theta}$ for which the following equation
+is satisfied:
+\[
+\nabla J\left(\boldsymbol{\theta}\right)=0.
+\]
+\item Before evaluating the gradient of the cost function, we write an alternative
+formula for $J\left(\boldsymbol{\theta}\right)$:
+\[
+J\left(\boldsymbol{\theta}\right)=\frac{1}{2m}\sum_{i=1}^{m}\left(\epsilon^{\left(i\right)}\right)^{2}=\frac{1}{2m}\sum_{i=1}^{m}\left[y^{\left(i\right)}-\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right]^{2}.
+\]
+\item Next, we differentiate the last expression with respect to $\theta_{k}$
+$\left(k=0,1,\ldots,n\right)$:
+\[
+\frac{\partial}{\partial\theta_{k}}\left[J\left(\boldsymbol{\theta}\right)\right]=-\frac{1}{m}\sum_{i=1}^{m}\left[y^{\left(i\right)}-\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right]\frac{\partial}{\partial\theta_{k}}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right].
+\]
+\item The derivative on the right-hand side of the above equation is given
+by
+\[
+\frac{\partial}{\partial\theta_{k}}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right]=\frac{\partial}{\partial\theta_{k}}\left(\sum_{j=0}^{n}\theta_{j}x_{j}^{\left(i\right)}\right)=\sum_{j=0}^{n}\delta_{jk}x_{j}^{\left(i\right)}=x_{k}^{\left(i\right)}.
+\]
+\item This result allows us to write the $k$-th component of $\nabla J\left(\boldsymbol{\theta}\right)$
+as follows:
+\[
+\left[\nabla J\left(\boldsymbol{\theta}\right)\right]_{k}=\frac{1}{m}\sum_{i=1}^{m}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}-y^{\left(i\right)}\right]x_{k}^{\left(i\right)}=\frac{1}{m}\sum_{i=1}^{m}\left(X^{T}\right)_{ki}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}-y^{\left(i\right)}\right]=\frac{1}{m}\left(X^{T}X\boldsymbol{\theta}-X^{T}\mathbf{y}\right)_{k}.
+\]
+\item Therefore, the gradient of the cost function is
+\[
+\nabla J\left(\boldsymbol{\theta}\right)=\frac{1}{m}\left(X^{T}X\boldsymbol{\theta}-X^{T}\mathbf{y}\right).
+\]
+\item To obtain the normal equation, we take the expression on the right-hand
+side and set it equal to zero:
+\[
+X^{T}X\boldsymbol{\theta}-X^{T}\mathbf{y}=0\quad\Rightarrow\quad X^{T}X\boldsymbol{\theta}=X^{T}\mathbf{y}.
+\]
+\item Later we explain the reason for the name ``normal equation''.
+\item We are not finished, since our goal is to derive a formula for the
+coefficients $\boldsymbol{\theta}$.
+\item To do so, we assume the following: all the rows of the design matrix
+are linearly independent.
+\item This is the same as assuming that the vectors $\mathbf{x}^{\left(i\right)}$
+are linearly independent.
+\item In this case, one can prove that the matrix $X^{T}X$ is invertible.
+\item Then we can multiply both sides of the normal equation by the inverse
+matrix $\left(X^{T}X\right)^{-1}$ to obtain
+\[
+\boldsymbol{\theta}=\left(X^{T}X\right)^{-1}X^{T}\mathbf{y}.
+\]
+\item This is the solution to the normal equation, i.e., the solution to
+the linear regression problem.
+\end{itemize}
+\uline{Why ``Normal'' Equation?}
+\begin{itemize}
+\item It is important to explain why the equation we have derived is called
+``normal''.
+\item Consider a real matrix $M$.
+\item By definition, this matrix is normal if it commutes with its transpose:
+\[
+\left[M,M^{T}\right]=MM^{T}-M^{T}M=0.
+\]
+\item The normal equation has this name, because it involves the matrix
+$X^{T}X$, which is normal.
+\item Let us quickly prove this fact.
+\item We begin by computing the transpose of $X^{T}X$:
+\[
+\left(X^{T}X\right)^{T}=X^{T}\left(X^{T}\right)^{T}=X^{T}X.
+\]
+\item Next, we use this result to evaluate the commutator $\left[X^{T}X,\left(X^{T}X\right)^{T}\right]$:
+\[
+\left[X^{T}X,\left(X^{T}X\right)^{T}\right]=X^{T}X\left(X^{T}X\right)^{T}-\left(X^{T}X\right)^{T}X^{T}X=X^{T}XX^{T}X-X^{T}XX^{T}X=0.
+\]
+\item Hence, $X^{T}X$ is a normal matrix.
+\item There is also a geometrical reason for the name ``normal equation''.
+\item To interpret this equation geometrically, first we rewrite it:
+\[
+X^{T}X\boldsymbol{\theta}=X^{T}\mathbf{y}\quad\Rightarrow\quad X^{T}\left(\mathbf{y}-X\boldsymbol{\theta}\right)=0\quad\Rightarrow\quad X^{T}\boldsymbol{\epsilon}=0.
+\]
+\item By evaluating the transpose of both sides of the last relation, we
+obtain
+\[
+\boldsymbol{\epsilon}^{T}X=0.
+\]
+\item To continue, consider any vector $X\mathbf{v}$ belonging to the column
+space of the design matrix.
+\item Due to the above formula, the inner product of $X\mathbf{v}$ and
+the residual vector $\boldsymbol{\epsilon}$ equals zero:
+\[
+\boldsymbol{\epsilon}^{T}X\mathbf{v}=0.
+\]
+\item Therefore, $\boldsymbol{\epsilon}$ is orthogonal (normal) to the
+column space of $X$.
+\item These are two ways of justifying the name ``normal equation''.
+\end{itemize}
+\uline{Particular Case: One Independent Variable}
+\begin{itemize}
+\item An important particular case is the one with a single independent
+variable.
+\item In other words, this is the case with a single feature, i.e., $n=1$.
+\item Next, we consider this case and derive the corresponding formula for
+the coefficients $\boldsymbol{\theta}$.
+\item When $n=1$, the design matrix can be written as
+\[
+X=\begin{bmatrix}x_{0}^{\left(1\right)} & x_{1}^{\left(1\right)}\\
+\vdots & \vdots\\
+x_{0}^{\left(m\right)} & x_{1}^{\left(m\right)}
+\end{bmatrix}.
+\]
+\item Since $X$ is a $m$ by 2 matrix, its transpose is 2 by $m$:
+\[
+X^{T}=\begin{bmatrix}x_{0}^{\left(1\right)} & \cdots & x_{0}^{\left(m\right)}\\
+x_{1}^{\left(1\right)} & \cdots & x_{1}^{\left(m\right)}
+\end{bmatrix}.
+\]
+\item Then the product $X^{T}X$ is a 2 by 2 matrix whose elements are given
+by
+\[
+\left(X^{T}X\right)_{ab}=\sum_{i=1}^{m}\left(X^{T}\right)_{ai}X_{ib}=\sum_{i=1}^{m}x_{a}^{\left(i\right)}x_{b}^{\left(i\right)}\quad\left(a,b=0,1\right).
+\]
+\item The last expression allows us to write $X^{T}X$ as follows:
+\[
+X^{T}X=\begin{bmatrix}m & \sum_{i=1}^{m}x_{1}^{\left(i\right)}\\
+\sum_{i=1}^{m}x_{1}^{\left(i\right)} & \sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}\right)^{2}
+\end{bmatrix}.
+\]
+\item This equation can be put in a simpler form if we introduce the averages
+\begin{align*}
+\overline{x} & \equiv\frac{1}{m}\sum_{i=1}^{m}x_{1}^{\left(i\right)},\\
+\overline{x^{2}} & \equiv\frac{1}{m}\sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}\right)^{2}.
+\end{align*}
+\item By using these definitions, we can rewrite $X^{T}X$ as
+\[
+X^{T}X=m\begin{bmatrix}1 & \overline{x}\\
+\overline{x} & \overline{x^{2}}
+\end{bmatrix}.
+\]
+\item To continue, we have to find the inverse of this matrix.
+\item Consider the following invertible 2 by 2 matrix:
+\[
+A=\begin{bmatrix}a & b\\
+c & d
+\end{bmatrix}.
+\]
+\item The formula for the corresponding inverse matrix is
+\[
+A^{-1}=\frac{1}{\det\left(A\right)}\begin{bmatrix}d & -b\\
+-c & a
+\end{bmatrix}.
+\]
+\item We shall use this result to determine $\left(X^{T}X\right)^{-1}$.
+\item To do so, first we compute the determinant of $X^{T}X$:
+\[
+\det\left(X^{T}X\right)=m^{2}\left(\overline{x^{2}}-\overline{x}^{2}\right)=m^{2}\sigma_{x}^{2},
+\]
+where $\sigma_{x}^{2}=\overline{x^{2}}-\overline{x}^{2}$ is the variance
+of the independent variable $x$.
+\item Then the inverse matrix $\left(X^{T}X\right)^{-1}$ can be written
+as
+\[
+\left(X^{T}X\right)^{-1}=\frac{1}{m\sigma_{x}^{2}}\begin{bmatrix}\overline{x^{2}} & -\overline{x}\\
+-\overline{x} & 1
+\end{bmatrix}.
+\]
+\item We proceed by calculating the product $X^{T}\mathbf{y}$, which is
+a 2-dimensional column vector.
+\item The components of this vector are given by
+\[
+\left(X^{T}\mathbf{y}\right)_{a}=\sum_{i=1}^{m}\left(X^{T}\right)_{ai}y^{\left(i\right)}=\sum_{i=1}^{m}x_{a}^{\left(i\right)}y^{\left(i\right)}\quad\left(a=0,1\right).
+\]
+\item This result allows us to write the following formula for $X^{T}\mathbf{y}$:
+\[
+X^{T}\mathbf{y}=\begin{bmatrix}\sum_{i=1}^{m}y^{\left(i\right)}\\
+\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}
+\end{bmatrix}=\begin{bmatrix}m\overline{y}\\
+\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}
+\end{bmatrix},
+\]
+where $\overline{y}$ denotes the average of the dependent variable
+$y$.
+\item To simplify the last expression, we define the covariance of $x$
+and $y$:
+\[
+\sigma_{x,y}\equiv\frac{1}{m}\sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}-\overline{x}\right)\left(y^{\left(i\right)}-\overline{y}\right).
+\]
+\item It is useful to derive an alternative equation for this quantity:
+\[
+\sigma_{x,y}=\frac{1}{m}\sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}y^{\left(i\right)}-x_{1}^{\left(i\right)}\overline{y}-\overline{x}y^{\left(i\right)}+\overline{x}\,\overline{y}\right)=\frac{1}{m}\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}-\overline{x}\,\overline{y}=\overline{xy}-\overline{x}\,\overline{y},
+\]
+where we have defined
+\[
+\overline{xy}\equiv\frac{1}{m}\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}.
+\]
+\item With the aid of the last equation for $\sigma_{x,y}$, we obtain our
+final result for $X^{T}\mathbf{y}$:
+\[
+X^{T}\mathbf{y}=m\begin{bmatrix}\overline{y}\\
+\overline{xy}
+\end{bmatrix}=m\begin{bmatrix}\overline{y}\\
+\sigma_{x,y}+\overline{x}\,\overline{y}
+\end{bmatrix}.
+\]
+\item Finally, we multiply our expressions for $\left(X^{T}X\right)^{-1}$
+and $X^{T}\mathbf{y}$:
+\[
+\left(X^{T}X\right)^{-1}X^{T}\mathbf{y}=\frac{1}{\sigma_{x}^{2}}\begin{bmatrix}\overline{x^{2}} & -\overline{x}\\
+-\overline{x} & 1
+\end{bmatrix}\begin{bmatrix}\overline{y}\\
+\sigma_{x,y}+\overline{x}\,\overline{y}
+\end{bmatrix}=\frac{1}{\sigma_{x}^{2}}\begin{bmatrix}\sigma_{x}^{2}\overline{y}-\overline{x}\sigma_{x,y}\\
+\sigma_{x,y}
+\end{bmatrix}.
+\]
+\item Recall that this product is equal to $\boldsymbol{\theta}$.
+\item In the case $n=1$, this vector is 2-dimensional.
+\item Therefore, we can write
+\[
+\begin{bmatrix}\theta_{0}\\
+\theta_{1}
+\end{bmatrix}=\frac{1}{\sigma_{x}^{2}}\begin{bmatrix}\sigma_{x}^{2}\overline{y}-\overline{x}\sigma_{x,y}\\
+\sigma_{x,y}
+\end{bmatrix}.
+\]
+\item Then we conclude that the slope of the desired linear function is
+\[
+\theta_{1}=\frac{\sigma_{x,y}}{\sigma_{x}^{2}}.
+\]
+\item The $y$-intercept of this function is given by
+\[
+\theta_{0}=\frac{\sigma_{x}^{2}\overline{y}-\overline{x}\sigma_{x,y}}{\sigma_{x}^{2}}=\overline{y}-\overline{x}\theta_{1}.
+\]
+\item These are the well-known $n=1$ formulas for the linear regression
+coefficients.
+\end{itemize}
+
+\end{document}

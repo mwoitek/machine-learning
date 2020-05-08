@@ -1,0 +1,31 @@
+LINEAR REGRESSION AND STATISTICAL ANALYSIS
+Name of the input data file: c0_2.0_c1_1.0.dat
+
+LINEAR REGRESSION COEFFICIENTS
+Method used to compute the coefficients: NORMAL EQUATION
+
+FIRST APPROACH
+theta_0:                                 + 2.00227
+theta_1:                                 + 0.99956
+EXPRESSION FOR THE LINEAR FUNCTION:      h(x) = + 2.00227 + 0.99956 * x_1
+
+SECOND APPROACH
+theta_0:                                 + 2.00227
+theta_1:                                 + 0.99956
+EXPRESSION FOR THE LINEAR FUNCTION:      h(x) = + 2.00227 + 0.99956 * x_1
+
+LINEAR FUNCTION THAT SHOULD DESCRIBE THE DATA SET
+COEFFICIENTS OF THE LINEAR FUNCTION
+theta_0:                                 + 2.00000
+theta_1:                                 + 1.00000
+EXPRESSION FOR THE LINEAR FUNCTION:      h(x) = + 2.00000 + 1.00000 * x_1
+
+STATISTICAL QUANTITIES RELATED TO THE DATA SET
+Average of x:                            5.00000
+Average of y:                            7.00005
+Variance of x:                           8.35000
+Variance of y:                           8.34343
+Standard deviation of x:                 2.88964
+Standard deviation of y:                 2.88850
+Covariance:                              8.34629
+Correlation coefficient between x and y: 0.99995

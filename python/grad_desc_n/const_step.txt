@@ -1,0 +1,629 @@
+GRADIENT DESCENT ALGORITHM WITH A CONSTANT STEP SIZE
+
+STEP SIZE: 0.01
+DESIRED PRECISION: 0.00001
+MAXIMUM NUMBER OF ITERATIONS: 10000
+
+NUMBER OF INDEPENDENT VARIABLES: 5
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000984
+The value of x_2 is 2.000481
+The value of x_3 is 2.999777
+The value of x_4 is 3.999606
+The value of x_5 is 4.999776
+
+To obtain these results, we had to iterate 783 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 6
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000665
+The value of x_2 is 2.000251
+The value of x_3 is 3.000983
+The value of x_4 is 3.999382
+The value of x_5 is 4.999661
+The value of x_6 is 5.999178
+
+To obtain these results, we had to iterate 796 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 7
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000985
+The value of x_2 is 1.999847
+The value of x_3 is 2.999777
+The value of x_4 is 4.000081
+The value of x_5 is 4.999728
+The value of x_6 is 5.999680
+The value of x_7 is 6.999843
+
+To obtain these results, we had to iterate 853 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 8
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000566
+The value of x_2 is 1.999601
+The value of x_3 is 3.000614
+The value of x_4 is 3.999437
+The value of x_5 is 5.000740
+The value of x_6 is 6.000459
+The value of x_7 is 6.999012
+The value of x_8 is 7.999898
+
+To obtain these results, we had to iterate 774 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 9
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000389
+The value of x_2 is 2.000141
+The value of x_3 is 3.000550
+The value of x_4 is 4.000445
+The value of x_5 is 4.999902
+The value of x_6 is 6.000016
+The value of x_7 is 7.000336
+The value of x_8 is 7.999925
+The value of x_9 is 8.999016
+
+To obtain these results, we had to iterate 859 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 10
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000982
+The value of x_2 is 2.000807
+The value of x_3 is 3.000713
+The value of x_4 is 4.000549
+The value of x_5 is 4.999705
+The value of x_6 is 5.999634
+The value of x_7 is 6.999639
+The value of x_8 is 7.999434
+The value of x_9 is 8.999810
+The value of x_10 is 9.999020
+
+To obtain these results, we had to iterate 861 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 11
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000983
+The value of x_2 is 2.000058
+The value of x_3 is 3.000057
+The value of x_4 is 4.000830
+The value of x_5 is 5.000000
+The value of x_6 is 5.999415
+The value of x_7 is 6.999482
+The value of x_8 is 7.999955
+The value of x_9 is 8.999735
+The value of x_10 is 10.000100
+The value of x_11 is 10.999647
+
+To obtain these results, we had to iterate 891 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 12
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000742
+The value of x_2 is 2.000988
+The value of x_3 is 3.000929
+The value of x_4 is 4.000618
+The value of x_5 is 4.999742
+The value of x_6 is 5.999503
+The value of x_7 is 7.000091
+The value of x_8 is 7.999437
+The value of x_9 is 9.000252
+The value of x_10 is 9.999980
+The value of x_11 is 10.999596
+The value of x_12 is 11.999571
+
+To obtain these results, we had to iterate 902 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 13
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000986
+The value of x_2 is 2.000315
+The value of x_3 is 3.000208
+The value of x_4 is 4.000128
+The value of x_5 is 5.000438
+The value of x_6 is 6.000245
+The value of x_7 is 6.999808
+The value of x_8 is 7.999508
+The value of x_9 is 8.999928
+The value of x_10 is 9.999592
+The value of x_11 is 10.999949
+The value of x_12 is 11.999570
+The value of x_13 is 12.999756
+
+To obtain these results, we had to iterate 934 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 14
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000928
+The value of x_2 is 2.000249
+The value of x_3 is 3.000982
+The value of x_4 is 4.000336
+The value of x_5 is 5.000786
+The value of x_6 is 6.000685
+The value of x_7 is 6.999497
+The value of x_8 is 8.000275
+The value of x_9 is 8.999549
+The value of x_10 is 9.999167
+The value of x_11 is 11.000064
+The value of x_12 is 11.999372
+The value of x_13 is 12.999511
+The value of x_14 is 13.999859
+
+To obtain these results, we had to iterate 917 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+The value of x_14 is 14.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 15
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000981
+The value of x_2 is 2.000302
+The value of x_3 is 3.000834
+The value of x_4 is 4.000326
+The value of x_5 is 5.000277
+The value of x_6 is 6.000045
+The value of x_7 is 6.999557
+The value of x_8 is 7.999441
+The value of x_9 is 9.000214
+The value of x_10 is 9.999210
+The value of x_11 is 10.999733
+The value of x_12 is 11.999847
+The value of x_13 is 12.999058
+The value of x_14 is 13.999958
+The value of x_15 is 14.999062
+
+To obtain these results, we had to iterate 928 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+The value of x_14 is 14.000000
+The value of x_15 is 15.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 16
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000612
+The value of x_2 is 2.000749
+The value of x_3 is 3.000655
+The value of x_4 is 4.000323
+The value of x_5 is 5.000347
+The value of x_6 is 6.000372
+The value of x_7 is 6.999799
+The value of x_8 is 7.999629
+The value of x_9 is 9.000023
+The value of x_10 is 9.999422
+The value of x_11 is 10.999800
+The value of x_12 is 11.999538
+The value of x_13 is 12.999870
+The value of x_14 is 13.999015
+The value of x_15 is 15.000040
+The value of x_16 is 15.999624
+
+To obtain these results, we had to iterate 935 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+The value of x_14 is 14.000000
+The value of x_15 is 15.000000
+The value of x_16 is 16.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 17
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000980
+The value of x_2 is 2.000820
+The value of x_3 is 3.000278
+The value of x_4 is 4.000168
+The value of x_5 is 5.000712
+The value of x_6 is 6.000679
+The value of x_7 is 7.000296
+The value of x_8 is 8.000127
+The value of x_9 is 8.999792
+The value of x_10 is 10.000432
+The value of x_11 is 10.999622
+The value of x_12 is 11.999544
+The value of x_13 is 13.000279
+The value of x_14 is 13.999352
+The value of x_15 is 14.999253
+The value of x_16 is 15.999672
+The value of x_17 is 16.999981
+
+To obtain these results, we had to iterate 944 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+The value of x_14 is 14.000000
+The value of x_15 is 15.000000
+The value of x_16 is 16.000000
+The value of x_17 is 17.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 18
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000084
+The value of x_2 is 2.000492
+The value of x_3 is 3.000462
+The value of x_4 is 4.000906
+The value of x_5 is 5.000438
+The value of x_6 is 6.000450
+The value of x_7 is 6.999854
+The value of x_8 is 7.999989
+The value of x_9 is 9.000489
+The value of x_10 is 9.999587
+The value of x_11 is 10.999787
+The value of x_12 is 12.000192
+The value of x_13 is 13.000288
+The value of x_14 is 13.999262
+The value of x_15 is 14.999595
+The value of x_16 is 15.999206
+The value of x_17 is 16.999013
+The value of x_18 is 17.999942
+
+To obtain these results, we had to iterate 945 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+The value of x_14 is 14.000000
+The value of x_15 is 15.000000
+The value of x_16 is 16.000000
+The value of x_17 is 17.000000
+The value of x_18 is 18.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 19
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000811
+The value of x_2 is 2.000475
+The value of x_3 is 3.000418
+The value of x_4 is 4.000436
+The value of x_5 is 5.000171
+The value of x_6 is 6.000525
+The value of x_7 is 7.000338
+The value of x_8 is 8.000066
+The value of x_9 is 8.999754
+The value of x_10 is 10.000442
+The value of x_11 is 10.999563
+The value of x_12 is 11.999442
+The value of x_13 is 12.999553
+The value of x_14 is 13.999775
+The value of x_15 is 14.999800
+The value of x_16 is 15.999718
+The value of x_17 is 16.999059
+The value of x_18 is 17.999013
+The value of x_19 is 18.999926
+
+To obtain these results, we had to iterate 961 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+The value of x_14 is 14.000000
+The value of x_15 is 15.000000
+The value of x_16 is 16.000000
+The value of x_17 is 17.000000
+The value of x_18 is 18.000000
+The value of x_19 is 19.000000
+************************************************************
+
+NUMBER OF INDEPENDENT VARIABLES: 20
+
+************************************************************
+APPROXIMATE RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000494
+The value of x_2 is 1.999964
+The value of x_3 is 3.000378
+The value of x_4 is 4.000970
+The value of x_5 is 4.999848
+The value of x_6 is 6.000070
+The value of x_7 is 7.000394
+The value of x_8 is 8.000604
+The value of x_9 is 9.000393
+The value of x_10 is 10.000386
+The value of x_11 is 10.999858
+The value of x_12 is 11.999905
+The value of x_13 is 13.000232
+The value of x_14 is 13.999229
+The value of x_15 is 14.999804
+The value of x_16 is 15.999867
+The value of x_17 is 16.999506
+The value of x_18 is 18.000097
+The value of x_19 is 18.999734
+The value of x_20 is 19.999015
+
+To obtain these results, we had to iterate 961 times
+************************************************************
+
+************************************************************
+EXACT RESULT FOR THE VALUES THAT MINIMIZE THE FUNCTION:
+
+The value of x_1 is 1.000000
+The value of x_2 is 2.000000
+The value of x_3 is 3.000000
+The value of x_4 is 4.000000
+The value of x_5 is 5.000000
+The value of x_6 is 6.000000
+The value of x_7 is 7.000000
+The value of x_8 is 8.000000
+The value of x_9 is 9.000000
+The value of x_10 is 10.000000
+The value of x_11 is 11.000000
+The value of x_12 is 12.000000
+The value of x_13 is 13.000000
+The value of x_14 is 14.000000
+The value of x_15 is 15.000000
+The value of x_16 is 16.000000
+The value of x_17 is 17.000000
+The value of x_18 is 18.000000
+The value of x_19 is 19.000000
+The value of x_20 is 20.000000
+************************************************************

@@ -1,0 +1,15 @@
+LINEAR REGRESSION
+Name of the input data file: c0_4.0_c1_1.5.dat
+
+LINEAR REGRESSION COEFFICIENTS
+Method used to compute the coefficients: GRADIENT DESCENT
+theta_0:                                 + 3.99545
+theta_1:                                 + 1.50073
+EXPRESSION FOR THE LINEAR FUNCTION:      h(x) = + 3.99545 + 1.50073 * x_1
+Number of iterations performed:          2726
+
+LINEAR FUNCTION THAT SHOULD DESCRIBE THE DATA SET
+COEFFICIENTS OF THE LINEAR FUNCTION
+theta_0:                                 + 4.00000
+theta_1:                                 + 1.50000
+EXPRESSION FOR THE LINEAR FUNCTION:      h(x) = + 4.00000 + 1.50000 * x_1

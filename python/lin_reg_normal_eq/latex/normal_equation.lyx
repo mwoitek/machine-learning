@@ -1,0 +1,1383 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\begin_preamble
+\usepackage[none]{hyphenat}
+\end_preamble
+\use_default_options true
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language american
+\language_package babel
+\inputencoding utf8
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "eulervm" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 10
+\spacing single
+\use_hyperref true
+\pdf_author "Marcio Woitek"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 1
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Normal Equation
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Notation and Definition of the Problem
+\end_layout
+
+\begin_layout Itemize
+Here we use Machine Learning terminology.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ be non-zero natural numbers.
+\end_layout
+
+\begin_layout Itemize
+The general case has 
+\begin_inset Formula $n$
+\end_inset
+
+ features, i.e., 
+\begin_inset Formula $n$
+\end_inset
+
+ independent variables 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+As usual, we define 
+\begin_inset Formula $x_{0}\equiv1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+These quantities are written as components of the 
+\begin_inset Formula $\left(n+1\right)$
+\end_inset
+
+-dimensional column vector 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbf{x}=\begin{bmatrix}x_{0}\\
+x_{1}\\
+\vdots\\
+x_{n}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The corresponding dependent variable is denoted by 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+A training example is represented by the ordered pair 
+\begin_inset Formula $\left(\mathbf{x},y\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In general, we have 
+\begin_inset Formula $m$
+\end_inset
+
+ training examples 
+\begin_inset Formula $\left(\mathbf{x}^{\left(1\right)},y^{\left(1\right)}\right),\ldots,\left(\mathbf{x}^{\left(m\right)},y^{\left(m\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Next, we use the column vectors 
+\begin_inset Formula $\mathbf{x}^{\left(i\right)}$
+\end_inset
+
+ 
+\begin_inset Formula $\left(i=1,\ldots,m\right)$
+\end_inset
+
+ to define the 
+\begin_inset Formula $m$
+\end_inset
+
+ by 
+\begin_inset Formula $n+1$
+\end_inset
+
+ design matrix 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+By definition, the 
+\begin_inset Formula $i$
+\end_inset
+
+-th row of 
+\begin_inset Formula $X$
+\end_inset
+
+ is the row vector 
+\begin_inset Formula $\left(\mathbf{x}^{\left(i\right)}\right)^{T}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+X\equiv\begin{bmatrix}\left(\mathbf{x}^{\left(1\right)}\right)^{T}\\
+\vdots\\
+\left(\mathbf{x}^{\left(m\right)}\right)^{T}
+\end{bmatrix}=\begin{bmatrix}x_{0}^{\left(1\right)} & x_{1}^{\left(1\right)} & \cdots & x_{n}^{\left(1\right)}\\
+\vdots & \vdots & \vdots & \vdots\\
+x_{0}^{\left(m\right)} & x_{1}^{\left(m\right)} & \cdots & x_{n}^{\left(m\right)}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We write the values of the variable 
+\begin_inset Formula $y$
+\end_inset
+
+ (observed values) as components of the 
+\begin_inset Formula $m$
+\end_inset
+
+-dimensional column vector 
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathbf{y}=\begin{bmatrix}y^{\left(1\right)}\\
+\vdots\\
+y^{\left(m\right)}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assumption: The relation between the dependent variable and the independent
+ ones is linear.
+\end_layout
+
+\begin_layout Itemize
+In other words, the observed value is a linear function of the features.
+\end_layout
+
+\begin_layout Itemize
+This function has 
+\begin_inset Formula $n+1$
+\end_inset
+
+ coefficients 
+\begin_inset Formula $\theta_{0},\theta_{1},\ldots,\theta_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+They are written as components of the 
+\begin_inset Formula $\left(n+1\right)$
+\end_inset
+
+-dimensional column vector 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\boldsymbol{\theta}=\begin{bmatrix}\theta_{0}\\
+\theta_{1}\\
+\vdots\\
+\theta_{n}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then the mathematical form of our hypothesis is
+\begin_inset Formula 
+\[
+y=h_{\boldsymbol{\theta}}\left(\mathbf{x}\right)=\theta_{0}x_{0}+\theta_{1}x_{1}+\ldots+\theta_{n}x_{n}=\boldsymbol{\theta}^{T}\mathbf{x}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+An alternative equation for 
+\begin_inset Formula $y$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+y=\sum_{j=0}^{n}\theta_{j}x_{j}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If this assumption is correct, the observed values can be expressed as
+\begin_inset Formula 
+\[
+y^{\left(i\right)}=\boldsymbol{\theta}^{T}\mathbf{x}^{\left(i\right)}=\sum_{j=0}^{n}\theta_{j}x_{j}^{\left(i\right)},\quad i=1,\ldots,m.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We continue by writing the last sum in terms of the design matrix 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+To do so, we consider the 
+\begin_inset Formula $i$
+\end_inset
+
+-th component of the column vector 
+\begin_inset Formula $X\boldsymbol{\theta}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left(X\boldsymbol{\theta}\right)^{\left(i\right)}=\sum_{j=0}^{n}X_{ij}\theta_{j}=\sum_{j=0}^{n}\theta_{j}x_{j}^{\left(i\right)}=y^{\left(i\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Therefore, the matrix version of our hypothesis is
+\begin_inset Formula 
+\[
+\mathbf{y}=X\boldsymbol{\theta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+However, in many situations, this assumption is not entirely correct.
+\end_layout
+
+\begin_layout Itemize
+Nevertheless, it can be used as an approximation.
+\end_layout
+
+\begin_layout Itemize
+In other words, the observed values can be approximately described by a
+ linear function of the features.
+\end_layout
+
+\begin_layout Itemize
+In these cases, there are errors (also called residuals) 
+\begin_inset Formula $\epsilon^{\left(i\right)}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\epsilon^{\left(i\right)}=y^{\left(i\right)}-\left(X\boldsymbol{\theta}\right)^{\left(i\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This equation can be put in matrix form if we introduce the 
+\begin_inset Formula $m$
+\end_inset
+
+-dimensional column vector 
+\begin_inset Formula $\boldsymbol{\epsilon}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\boldsymbol{\epsilon}=\begin{bmatrix}\epsilon^{\left(1\right)}\\
+\vdots\\
+\epsilon^{\left(m\right)}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This definition allows us to write the formula for the residuals as
+\begin_inset Formula 
+\[
+\boldsymbol{\epsilon}=\mathbf{y}-X\boldsymbol{\theta}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Finally, we can present the statement of the problem we shall solve:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Suppose we have a set of training examples that are approximately described
+ by a linear function 
+\begin_inset Formula $h_{\boldsymbol{\theta}}$
+\end_inset
+
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+Determine the function 
+\begin_inset Formula $h_{\boldsymbol{\theta}}$
+\end_inset
+
+ corresponding to the best approximation.
+\end_layout
+
+\begin_layout Itemize
+This is the so-called linear regression problem.
+\end_layout
+
+\begin_layout Itemize
+To continue, we have to state it more precisely.
+\end_layout
+
+\begin_layout Itemize
+Our goal is to find a linear function, which is characterized by its coefficient
+s 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Then solving the problem means finding a specific vector 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+This is the vector that minimizes the residuals.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Cost Function
+\end_layout
+
+\begin_layout Itemize
+To proceed, we define the so-called cost function 
+\begin_inset Formula $J\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+J\left(\boldsymbol{\theta}\right)\equiv\frac{1}{2m}\left|\boldsymbol{\epsilon}\right|^{2}=\frac{1}{2m}\left|\mathbf{y}-X\boldsymbol{\theta}\right|^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+By minimizing the residuals, we obtain the minimum value of 
+\begin_inset Formula $\left|\boldsymbol{\epsilon}\right|$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In turn, this gives us the minimum of the cost function.
+\end_layout
+
+\begin_layout Itemize
+Hence, we can solve our problem by minimizing 
+\begin_inset Formula $J\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Solution to the Problem: Derivation of the Normal Equation
+\end_layout
+
+\begin_layout Itemize
+To minimize 
+\begin_inset Formula $J\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+, we have to determine the vector 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+ for which the following equation is satisfied:
+\begin_inset Formula 
+\[
+\nabla J\left(\boldsymbol{\theta}\right)=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Before evaluating the gradient of the cost function, we write an alternative
+ formula for 
+\begin_inset Formula $J\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+J\left(\boldsymbol{\theta}\right)=\frac{1}{2m}\sum_{i=1}^{m}\left(\epsilon^{\left(i\right)}\right)^{2}=\frac{1}{2m}\sum_{i=1}^{m}\left[y^{\left(i\right)}-\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right]^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Next, we differentiate the last expression with respect to 
+\begin_inset Formula $\theta_{k}$
+\end_inset
+
+ 
+\begin_inset Formula $\left(k=0,1,\ldots,n\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\theta_{k}}\left[J\left(\boldsymbol{\theta}\right)\right]=-\frac{1}{m}\sum_{i=1}^{m}\left[y^{\left(i\right)}-\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right]\frac{\partial}{\partial\theta_{k}}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The derivative on the right-hand side of the above equation is given by
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\theta_{k}}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}\right]=\frac{\partial}{\partial\theta_{k}}\left(\sum_{j=0}^{n}\theta_{j}x_{j}^{\left(i\right)}\right)=\sum_{j=0}^{n}\delta_{jk}x_{j}^{\left(i\right)}=x_{k}^{\left(i\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This result allows us to write the 
+\begin_inset Formula $k$
+\end_inset
+
+-th component of 
+\begin_inset Formula $\nabla J\left(\boldsymbol{\theta}\right)$
+\end_inset
+
+ as follows:
+\begin_inset Formula 
+\[
+\left[\nabla J\left(\boldsymbol{\theta}\right)\right]_{k}=\frac{1}{m}\sum_{i=1}^{m}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}-y^{\left(i\right)}\right]x_{k}^{\left(i\right)}=\frac{1}{m}\sum_{i=1}^{m}\left(X^{T}\right)_{ki}\left[\left(X\boldsymbol{\theta}\right)^{\left(i\right)}-y^{\left(i\right)}\right]=\frac{1}{m}\left(X^{T}X\boldsymbol{\theta}-X^{T}\mathbf{y}\right)_{k}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Therefore, the gradient of the cost function is
+\begin_inset Formula 
+\[
+\nabla J\left(\boldsymbol{\theta}\right)=\frac{1}{m}\left(X^{T}X\boldsymbol{\theta}-X^{T}\mathbf{y}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To obtain the normal equation, we take the expression on the right-hand
+ side and set it equal to zero:
+\begin_inset Formula 
+\[
+X^{T}X\boldsymbol{\theta}-X^{T}\mathbf{y}=0\quad\Rightarrow\quad X^{T}X\boldsymbol{\theta}=X^{T}\mathbf{y}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Later we explain the reason for the name 
+\begin_inset Quotes xld
+\end_inset
+
+normal equation
+\begin_inset Quotes xrd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+We are not finished, since our goal is to derive a formula for the coefficients
+ 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+To do so, we assume the following: all the rows of the design matrix are
+ linearly independent.
+\end_layout
+
+\begin_layout Itemize
+This is the same as assuming that the vectors 
+\begin_inset Formula $\mathbf{x}^{\left(i\right)}$
+\end_inset
+
+ are linearly independent.
+\end_layout
+
+\begin_layout Itemize
+In this case, one can prove that the matrix 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+ is invertible.
+\end_layout
+
+\begin_layout Itemize
+Then we can multiply both sides of the normal equation by the inverse matrix
+ 
+\begin_inset Formula $\left(X^{T}X\right)^{-1}$
+\end_inset
+
+ to obtain
+\begin_inset Formula 
+\[
+\boldsymbol{\theta}=\left(X^{T}X\right)^{-1}X^{T}\mathbf{y}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This is the solution to the normal equation, i.e., the solution to the linear
+ regression problem.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Why 
+\begin_inset Quotes xld
+\end_inset
+
+Normal
+\begin_inset Quotes xrd
+\end_inset
+
+ Equation?
+\end_layout
+
+\begin_layout Itemize
+It is important to explain why the equation we have derived is called 
+\begin_inset Quotes xld
+\end_inset
+
+normal
+\begin_inset Quotes xrd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Consider a real matrix 
+\begin_inset Formula $M$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+By definition, this matrix is normal if it commutes with its transpose:
+\begin_inset Formula 
+\[
+\left[M,M^{T}\right]=MM^{T}-M^{T}M=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The normal equation has this name, because it involves the matrix 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+, which is normal.
+\end_layout
+
+\begin_layout Itemize
+Let us quickly prove this fact.
+\end_layout
+
+\begin_layout Itemize
+We begin by computing the transpose of 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left(X^{T}X\right)^{T}=X^{T}\left(X^{T}\right)^{T}=X^{T}X.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Next, we use this result to evaluate the commutator 
+\begin_inset Formula $\left[X^{T}X,\left(X^{T}X\right)^{T}\right]$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left[X^{T}X,\left(X^{T}X\right)^{T}\right]=X^{T}X\left(X^{T}X\right)^{T}-\left(X^{T}X\right)^{T}X^{T}X=X^{T}XX^{T}X-X^{T}XX^{T}X=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hence, 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+ is a normal matrix.
+\end_layout
+
+\begin_layout Itemize
+There is also a geometrical reason for the name 
+\begin_inset Quotes xld
+\end_inset
+
+normal equation
+\begin_inset Quotes xrd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+To interpret this equation geometrically, first we rewrite it:
+\begin_inset Formula 
+\[
+X^{T}X\boldsymbol{\theta}=X^{T}\mathbf{y}\quad\Rightarrow\quad X^{T}\left(\mathbf{y}-X\boldsymbol{\theta}\right)=0\quad\Rightarrow\quad X^{T}\boldsymbol{\epsilon}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+By evaluating the transpose of both sides of the last relation, we obtain
+\begin_inset Formula 
+\[
+\boldsymbol{\epsilon}^{T}X=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To continue, consider any vector 
+\begin_inset Formula $X\mathbf{v}$
+\end_inset
+
+ belonging to the column space of the design matrix.
+\end_layout
+
+\begin_layout Itemize
+Due to the above formula, the inner product of 
+\begin_inset Formula $X\mathbf{v}$
+\end_inset
+
+ and the residual vector 
+\begin_inset Formula $\boldsymbol{\epsilon}$
+\end_inset
+
+ equals zero:
+\begin_inset Formula 
+\[
+\boldsymbol{\epsilon}^{T}X\mathbf{v}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Therefore, 
+\begin_inset Formula $\boldsymbol{\epsilon}$
+\end_inset
+
+ is orthogonal (normal) to the column space of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+These are two ways of justifying the name 
+\begin_inset Quotes xld
+\end_inset
+
+normal equation
+\begin_inset Quotes xrd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Particular Case: One Independent Variable
+\end_layout
+
+\begin_layout Itemize
+An important particular case is the one with a single independent variable.
+\end_layout
+
+\begin_layout Itemize
+In other words, this is the case with a single feature, i.e., 
+\begin_inset Formula $n=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Next, we consider this case and derive the corresponding formula for the
+ coefficients 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+When 
+\begin_inset Formula $n=1$
+\end_inset
+
+, the design matrix can be written as
+\begin_inset Formula 
+\[
+X=\begin{bmatrix}x_{0}^{\left(1\right)} & x_{1}^{\left(1\right)}\\
+\vdots & \vdots\\
+x_{0}^{\left(m\right)} & x_{1}^{\left(m\right)}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Since 
+\begin_inset Formula $X$
+\end_inset
+
+ is a 
+\begin_inset Formula $m$
+\end_inset
+
+ by 2 matrix, its transpose is 2 by 
+\begin_inset Formula $m$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+X^{T}=\begin{bmatrix}x_{0}^{\left(1\right)} & \cdots & x_{0}^{\left(m\right)}\\
+x_{1}^{\left(1\right)} & \cdots & x_{1}^{\left(m\right)}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then the product 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+ is a 2 by 2 matrix whose elements are given by
+\begin_inset Formula 
+\[
+\left(X^{T}X\right)_{ab}=\sum_{i=1}^{m}\left(X^{T}\right)_{ai}X_{ib}=\sum_{i=1}^{m}x_{a}^{\left(i\right)}x_{b}^{\left(i\right)}\quad\left(a,b=0,1\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The last expression allows us to write 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+ as follows:
+\begin_inset Formula 
+\[
+X^{T}X=\begin{bmatrix}m & \sum_{i=1}^{m}x_{1}^{\left(i\right)}\\
+\sum_{i=1}^{m}x_{1}^{\left(i\right)} & \sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}\right)^{2}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This equation can be put in a simpler form if we introduce the averages
+\begin_inset Formula 
+\begin{align*}
+\overline{x} & \equiv\frac{1}{m}\sum_{i=1}^{m}x_{1}^{\left(i\right)},\\
+\overline{x^{2}} & \equiv\frac{1}{m}\sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}\right)^{2}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+By using these definitions, we can rewrite 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+X^{T}X=m\begin{bmatrix}1 & \overline{x}\\
+\overline{x} & \overline{x^{2}}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To continue, we have to find the inverse of this matrix.
+\end_layout
+
+\begin_layout Itemize
+Consider the following invertible 2 by 2 matrix:
+\begin_inset Formula 
+\[
+A=\begin{bmatrix}a & b\\
+c & d
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The formula for the corresponding inverse matrix is
+\begin_inset Formula 
+\[
+A^{-1}=\frac{1}{\det\left(A\right)}\begin{bmatrix}d & -b\\
+-c & a
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We shall use this result to determine 
+\begin_inset Formula $\left(X^{T}X\right)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+To do so, first we compute the determinant of 
+\begin_inset Formula $X^{T}X$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\det\left(X^{T}X\right)=m^{2}\left(\overline{x^{2}}-\overline{x}^{2}\right)=m^{2}\sigma_{x}^{2},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma_{x}^{2}=\overline{x^{2}}-\overline{x}^{2}$
+\end_inset
+
+ is the variance of the independent variable 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Then the inverse matrix 
+\begin_inset Formula $\left(X^{T}X\right)^{-1}$
+\end_inset
+
+ can be written as
+\begin_inset Formula 
+\[
+\left(X^{T}X\right)^{-1}=\frac{1}{m\sigma_{x}^{2}}\begin{bmatrix}\overline{x^{2}} & -\overline{x}\\
+-\overline{x} & 1
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We proceed by calculating the product 
+\begin_inset Formula $X^{T}\mathbf{y}$
+\end_inset
+
+, which is a 2-dimensional column vector.
+\end_layout
+
+\begin_layout Itemize
+The components of this vector are given by
+\begin_inset Formula 
+\[
+\left(X^{T}\mathbf{y}\right)_{a}=\sum_{i=1}^{m}\left(X^{T}\right)_{ai}y^{\left(i\right)}=\sum_{i=1}^{m}x_{a}^{\left(i\right)}y^{\left(i\right)}\quad\left(a=0,1\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This result allows us to write the following formula for 
+\begin_inset Formula $X^{T}\mathbf{y}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+X^{T}\mathbf{y}=\begin{bmatrix}\sum_{i=1}^{m}y^{\left(i\right)}\\
+\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}
+\end{bmatrix}=\begin{bmatrix}m\overline{y}\\
+\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}
+\end{bmatrix},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\overline{y}$
+\end_inset
+
+ denotes the average of the dependent variable 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+To simplify the last expression, we define the covariance of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\sigma_{x,y}\equiv\frac{1}{m}\sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}-\overline{x}\right)\left(y^{\left(i\right)}-\overline{y}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It is useful to derive an alternative equation for this quantity:
+\begin_inset Formula 
+\[
+\sigma_{x,y}=\frac{1}{m}\sum_{i=1}^{m}\left(x_{1}^{\left(i\right)}y^{\left(i\right)}-x_{1}^{\left(i\right)}\overline{y}-\overline{x}y^{\left(i\right)}+\overline{x}\,\overline{y}\right)=\frac{1}{m}\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}-\overline{x}\,\overline{y}=\overline{xy}-\overline{x}\,\overline{y},
+\]
+
+\end_inset
+
+where we have defined
+\begin_inset Formula 
+\[
+\overline{xy}\equiv\frac{1}{m}\sum_{i=1}^{m}x_{1}^{\left(i\right)}y^{\left(i\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+With the aid of the last equation for 
+\begin_inset Formula $\sigma_{x,y}$
+\end_inset
+
+, we obtain our final result for 
+\begin_inset Formula $X^{T}\mathbf{y}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+X^{T}\mathbf{y}=m\begin{bmatrix}\overline{y}\\
+\overline{xy}
+\end{bmatrix}=m\begin{bmatrix}\overline{y}\\
+\sigma_{x,y}+\overline{x}\,\overline{y}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Finally, we multiply our expressions for 
+\begin_inset Formula $\left(X^{T}X\right)^{-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $X^{T}\mathbf{y}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left(X^{T}X\right)^{-1}X^{T}\mathbf{y}=\frac{1}{\sigma_{x}^{2}}\begin{bmatrix}\overline{x^{2}} & -\overline{x}\\
+-\overline{x} & 1
+\end{bmatrix}\begin{bmatrix}\overline{y}\\
+\sigma_{x,y}+\overline{x}\,\overline{y}
+\end{bmatrix}=\frac{1}{\sigma_{x}^{2}}\begin{bmatrix}\sigma_{x}^{2}\overline{y}-\overline{x}\sigma_{x,y}\\
+\sigma_{x,y}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Recall that this product is equal to 
+\begin_inset Formula $\boldsymbol{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In the case 
+\begin_inset Formula $n=1$
+\end_inset
+
+, this vector is 2-dimensional.
+\end_layout
+
+\begin_layout Itemize
+Therefore, we can write
+\begin_inset Formula 
+\[
+\begin{bmatrix}\theta_{0}\\
+\theta_{1}
+\end{bmatrix}=\frac{1}{\sigma_{x}^{2}}\begin{bmatrix}\sigma_{x}^{2}\overline{y}-\overline{x}\sigma_{x,y}\\
+\sigma_{x,y}
+\end{bmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then we conclude that the slope of the desired linear function is
+\begin_inset Formula 
+\[
+\theta_{1}=\frac{\sigma_{x,y}}{\sigma_{x}^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Formula $y$
+\end_inset
+
+-intercept of this function is given by
+\begin_inset Formula 
+\[
+\theta_{0}=\frac{\sigma_{x}^{2}\overline{y}-\overline{x}\sigma_{x,y}}{\sigma_{x}^{2}}=\overline{y}-\overline{x}\theta_{1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+These are the well-known 
+\begin_inset Formula $n=1$
+\end_inset
+
+ formulas for the linear regression coefficients.
+\end_layout
+
+\end_body
+\end_document

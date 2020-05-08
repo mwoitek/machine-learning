@@ -1,0 +1,129 @@
+%
+%
+%
+% ██╗    ██╗ ██████╗ ██╗████████╗███████╗██╗  ██╗
+% ██║    ██║██╔═══██╗██║╚══██╔══╝██╔════╝██║ ██╔╝
+% ██║ █╗ ██║██║   ██║██║   ██║   █████╗  █████╔╝
+% ██║███╗██║██║   ██║██║   ██║   ██╔══╝  ██╔═██╗
+% ╚███╔███╔╝╚██████╔╝██║   ██║   ███████╗██║  ██╗
+%  ╚══╝╚══╝  ╚═════╝ ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+%
+%
+%
+% .##.......####...######..######..##..##.
+% .##......##..##....##....##.......####..
+% .##......######....##....####......##...
+% .##......##..##....##....##.......####..
+% .######..##..##....##....######..##..##.
+%
+%
+%
+\documentclass[10pt,american]{scrartcl}
+\usepackage{mathpazo}
+\usepackage{eulervm}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1cm,bmargin=1cm,lmargin=1cm,rmargin=1cm}
+\pagestyle{empty}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage{microtype}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\hypersetup{
+ pdfauthor={Marcio Woitek}}
+\makeatletter
+\newlength{\lyxlabelwidth}
+\usepackage[none]{hyphenat}
+\makeatother
+
+\begin{document}
+
+\section*{Gradient Descent Algorithm}
+
+\subsection*{Relevant Formulas}
+
+\uline{Notation}
+\begin{itemize}
+\item The function we want to minimize is denoted by $f$.
+\item The number of independent variables of $f$ is denoted by $n$.
+\item The vector whose components are the independent variables of $f$
+is written as
+\[
+\mathbf{x}=\begin{bmatrix}x_{1}\\
+x_{2}\\
+\vdots\\
+x_{n}
+\end{bmatrix}.
+\]
+\item The algorithm produces a sequence of such vectors. This sequence is
+denoted by $\mathbf{x}^{\left(0\right)},\mathbf{x}^{\left(1\right)},\mathbf{x}^{\left(2\right)},\ldots$
+\end{itemize}
+\uline{Iteration Formulas}
+\begin{itemize}
+\item Algorithm with a \textbf{constant step size}:
+\begin{itemize}
+\item In this case, we have a single value $\gamma$ for the step size.
+\item We can generate the sequence $\mathbf{x}^{\left(0\right)},\mathbf{x}^{\left(1\right)},\mathbf{x}^{\left(2\right)},\ldots$
+by using the equation
+\[
+\mathbf{x}^{\left(i+1\right)}=\mathbf{x}^{\left(i\right)}-\gamma\nabla f\left[\mathbf{x}^{\left(i\right)}\right],\quad i=0,1,2,\ldots,
+\]
+where $\mathbf{x}^{\left(0\right)}$ must be passed as an input.
+\end{itemize}
+\item Algorithm with an \textbf{adaptive step size}:
+\begin{itemize}
+\item In this case, we have a sequence of values for the step size, i.e.,
+$\gamma_{0},\gamma_{1},\gamma_{2},\ldots$
+\item We can generate the sequence $\mathbf{x}^{\left(0\right)},\mathbf{x}^{\left(1\right)},\mathbf{x}^{\left(2\right)},\ldots$
+by using the equation
+\[
+\mathbf{x}^{\left(i+1\right)}=\mathbf{x}^{\left(i\right)}-\gamma_{i}\nabla f\left[\mathbf{x}^{\left(i\right)}\right],\quad i=0,1,2,\ldots,
+\]
+where $\mathbf{x}^{\left(0\right)}$ and $\gamma_{0}$ must be passed
+as inputs.
+\item The step size $\gamma_{i}$ can be written in terms of $\mathbf{x}^{\left(i\right)}$
+and $\mathbf{x}^{\left(i-1\right)}$ as
+\[
+\gamma_{i}=\frac{\left|\left[\mathbf{x}^{\left(i\right)}-\mathbf{x}^{\left(i-1\right)}\right]^{T}\left\{ \nabla f\left[\mathbf{x}^{\left(i\right)}\right]-\nabla f\left[\mathbf{x}^{\left(i-1\right)}\right]\right\} \right|}{\left|\nabla f\left[\mathbf{x}^{\left(i\right)}\right]-\nabla f\left[\mathbf{x}^{\left(i-1\right)}\right]\right|^{2}},\quad i=1,2,\ldots
+\]
+\end{itemize}
+\end{itemize}
+
+\subsection*{Example}
+
+Using Python, I implemented both versions of the gradient descent
+algorithm.\\To test my code, I chose to minimize the function
+\[
+f\left(\mathbf{x}\right)=\frac{1}{2}\sum_{i=1}^{n}\left(x_{i}-i\right)^{2}.
+\]
+It is straightforward to show that the gradient of this function is
+\[
+\nabla f\left(\mathbf{x}\right)=\begin{bmatrix}x_{1}-1\\
+x_{2}-2\\
+\vdots\\
+x_{n}-n
+\end{bmatrix}.
+\]
+This equation allows us to conclude that the minimum of $f\left(\mathbf{x}\right)$
+is at
+\[
+\mathbf{x}=\begin{bmatrix}1\\
+2\\
+\vdots\\
+n
+\end{bmatrix}.
+\]
+
+\end{document}
