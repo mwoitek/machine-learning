@@ -21,7 +21,6 @@
 # 1 - Creating vectors;
 # 2 - Creating matrices;
 # 3 - Determining the dimensions of vectors and matrices.
-
 echo on
 
 # CREATING VECTORS.

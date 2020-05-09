@@ -18,7 +18,6 @@
 #
 #
 # Commands for computing on data.
-
 echo on
 
 # Defining a few matrices and vectors:
@@ -50,9 +49,8 @@ B2 = M3 .^ 2
 
 # OTHER POWERS.
 
-# There is nothing special about squares.
-# The last two commands can be adapted so we can compute other powers.
-# Here are a few examples:
+# There is nothing special about squares. The last two commands can be adapted
+# so we can compute other powers. Here are a few examples:
 C1 = M3 ^ 3
 C2 = M3 .^ 3
 C3 = M3 ^ 4
@@ -99,16 +97,15 @@ min (v3)
 max (v3)
 
 # min/max can also be used to find the position of the minimum/maximum:
-[min_v3, ind_min_v3] = min (v3)
-[max_v3, ind_max_v3] = max (v3)
+[min_v3 ind_min_v3] = min (v3)
+[max_v3 ind_max_v3] = max (v3)
 
-# The above functions can also take matrix arguments.
-# In this case, min/max returns a row vector
-# with the minimum/maximum value of each column.
-# Here are a few examples:
+# The above functions can also take matrix arguments. In this case, min/max
+# returns a row vector with the minimum/maximum value of each column. Here are
+# a few examples:
 min (M5)
 max (M5)
-[min_M5, ind_min_M5] = min (M5)
-[max_M5, ind_max_M5] = max (M5)
+[min_M5 ind_min_M5] = min (M5)
+[max_M5 ind_max_M5] = max (M5)
 
 echo off

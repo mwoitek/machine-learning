@@ -21,7 +21,6 @@
 # 1 - Reading data from a file;
 # 2 - Writing data to a file;
 # 3 - Plotting data.
-
 echo on
 
 # READING DATA FROM A FILE.
@@ -50,10 +49,10 @@ whos "data_file_3"
 # WRITING DATA TO A FILE.
 
 # Extracting the first 20 components of the vector data_file_4:
-v1 = data_file_4 (1:20)
+v1 = data_file_4(1:20)
 
 # Extracting components 30 to 50 of the vector data_file_5:
-v2 = data_file_5 (30:50)
+v2 = data_file_5(30:50)
 
 # Writing the content of the vector v1 to a file:
 save ("-ascii", "vector_v1.dat", "v1")
@@ -64,9 +63,9 @@ save ("-ascii", "vector_v2.dat", "v2")
 # PLOTTING DATA.
 
 # Separating the columns of the matrix data_file_1:
-c1 = data_file_1 (:, 1)
-c2 = data_file_1 (:, 2)
-c3 = data_file_1 (:, 3)
+c1 = data_file_1(:,1)
+c2 = data_file_1(:,2)
+c3 = data_file_1(:,3)
 
 clear data_file_*
 clear v*

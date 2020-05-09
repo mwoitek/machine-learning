@@ -18,7 +18,6 @@
 #
 #
 # Commands that perform some useful operations on vectors and matrices.
-
 echo on
 
 # Defining a few matrices and vectors:
@@ -42,48 +41,48 @@ M2'
 M3'
 
 # Turning a matrix into a vector:
-M1 (:)
-M2 (:)
+M1(:)
+M2(:)
 
 # ACCESSING THE DATA INSIDE OF A MATRIX.
 
 # Reading the element in row 2 and column 1:
-M1 (2, 1)
+M1(2,1)
 
 # Reading the element in row 3 and column 2:
-M2 (3, 2)
+M2(3,2)
 
 # Extracting row 2:
-M1 (2, :)
+M1(2,:)
 
 # Extracting column 1:
-M2 (:, 1)
+M2(:,1)
 
 # Extracting rows 2 and 4:
-M3 ([2 4], :)
+M3([2 4],:)
 
 # Extracting columns 3 and 5:
-M3 (:, [3 5])
+M3(:,[3 5])
 
 # MODIFYING THE DATA INSIDE OF A MATRIX.
 
 # Changing row 2:
-M2 (2, :) = [0 1]
+M2(2,:) = [0 1]
 
 # Changing column 1:
-M2 (:, 1) = [11; 22; 33]
+M2(:,1) = [11; 22; 33]
 
 # Appending a row vector:
-M1 = [M1; v1] % To the bottom
-M1 = [v1; M1] % To the top
+M1 = [M1; v1] # To the bottom
+M1 = [v1; M1] # To the top
 
 # Appending a column vector:
-M2 = [M2, v2] % To the right
-M2 = [v2, M2] % To the left
+M2 = [M2 v2] # To the right
+M2 = [v2 M2] # To the left
 
 # Appending two matrices:
-A1 = [M1 M2'] % Horizontal append
-A2 = [M1; M2'] % Vertical append
+A1 = [M1 M2'] # Horizontal append
+A2 = [M1; M2'] # Vertical append
 
 # REMOVING VARIABLES FROM THE CURRENT SCOPE.
 
