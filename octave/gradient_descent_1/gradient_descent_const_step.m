@@ -17,13 +17,16 @@
 #
 #
 #
-# Implementation of the GRADIENT DESCENT algorithm.
-# This version of the algorithm uses a CONSTANT STEP SIZE.
-#
-# This code finds the value that minimizes the function
+# Implementation of the GRADIENT DESCENT algorithm. This version of the
+# algorithm uses a CONSTANT STEP SIZE. This code finds the value that minimizes
+# the function
 # f(x)=x^{4}-3x^{3}+2.
 # The exact result for this value is
 # x=\frac{9}{4}.
+
+clear;
+close all;
+clc
 
 # PARAMETERS OF THE ALGORITHM.
 
@@ -51,4 +54,4 @@ for i = 1:max_iter
   endif
 endfor
 
-printf ("Global minimum of f(x) at x = %.5f\n", next_x)
+printf ("Global minimum of f(x) at x = %.5f\n", next_x);

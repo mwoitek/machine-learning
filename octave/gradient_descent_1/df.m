@@ -18,11 +18,9 @@
 #
 #
 #
-# Function that computes the derivative of the function f.
-#
-# The corresponding formula is
+# Function that computes the derivative of the function f. The corresponding
+# formula is
 # f^{\prime}(x)=4x^{3}-9x^{2}.
-
 function fprime = df (x)
   fprime = 4 * x ^ 3 - 9 * x ^ 2;
 endfunction
