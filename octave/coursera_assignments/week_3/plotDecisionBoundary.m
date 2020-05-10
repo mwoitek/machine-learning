@@ -58,7 +58,9 @@ function plotDecisionBoundary (theta, X, y)
 
     # Plots z = 0. You need to specify the range [0 0].
     z = z';
+    hold on;
     contour (u, u, z, [0 0], "LineWidth", 2);
+    hold off;
 
   endif
 
