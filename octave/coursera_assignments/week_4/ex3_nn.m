@@ -17,13 +17,21 @@
 #
 #
 #
-# Machine Learning Online Class - Exercise 3: One-vs-all.
+# Machine Learning Online Class - Exercise 3: Neural networks.
 # This file isn't just a copy of the one provided to us. I changed the original
 # code considerably.
 
 clear;
 close all;
 clc
+
+# Sets a few parameters.
+# 20x20 Input images of digits.
+input_layer_size = 400;
+# 25 Hidden units.
+hidden_layer_size = 25;
+# 10 labels, from 1 to 10. We have mapped the digit 0 to label 10.
+num_labels = 10;
 
 fprintf ("Loading and visualizing data...\n");
 # The training data is stored in the arrays X and y.
@@ -39,39 +47,40 @@ displayData (sel);
 fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
 
-fprintf ("\nTesting the function lrCostFunction...\n");
+fprintf ("\nLoading saved neural network parameters...\n");
+# Loads the weights into the matrices Theta1 and Theta2. Theta1 has size 25x401
+# and Theta2 has size 10x26.
+load ("ex3weights.mat");
 
-theta_t = [-2; -1; 1; 2];
-X_t = [(ones (5, 1)) (reshape (1:15, 5, 3) / 10)];
-y_t = [1; 0; 1; 0; 1] >= 0.5;
-lambda_t = 3;
-[J grad] = lrCostFunction (theta_t, X_t, y_t, lambda_t);
-
-fprintf ("\nCost: %.6f\n", J);
-fprintf ("Expected cost: 2.534819\n");
-fprintf ("Gradient:\n");
-fprintf ("%.6f\n", grad);
-fprintf ("Expected gradient:\n");
-fprintf ("0.146561\n");
-fprintf ("-0.548558\n");
-fprintf ("0.724722\n");
-fprintf ("1.398003\n");
-
-fprintf ("\nProgram paused. Press ENTER to continue.\n");
-pause;
-
-fprintf ("\nTraining one-vs-all logistic regression...\n");
-# 10 labels, from 1 to 10. We have mapped the digit 0 to label 10.
-num_labels = 10;
-lambda = 0.1;
-all_theta = oneVsAll (X, y, num_labels, lambda);
-
-fprintf ("\nProgram paused. Press ENTER to continue.\n");
-pause;
-
-# Predicts the labels of the training set. It also computes and displays the
-# training accuracy.
-p = predictOneVsAll (all_theta, X);
+# Uses the neural network to predict the labels of the training set. It also
+# computes and displays the training accuracy.
+p = predict (Theta1, Theta2, X);
 train_acc = 100 * mean (double (p == y));
 fprintf ("\nTraining accuracy: %.1f %%\n", train_acc);
-fprintf ("Expected accuracy: 94.9 %%\n");
+fprintf ("Expected accuracy: 97.5 %%\n");
+
+fprintf ("\nProgram paused. Press ENTER to continue.\n\n");
+pause;
+
+# To give us an idea of the network's output, we can run through the examples
+# one at a time to see what the network is predicting.
+
+# Randomly permutes the examples.
+rp = randperm (m);
+
+for i = 1:m
+
+  fprintf ("Displaying example image %d\n", i);
+  temp = X(rp(i),:);
+  displayData (temp);
+
+  p = predict (Theta1, Theta2, temp);
+  fprintf ("Neural network prediction: %d (digit %d)\n", p, mod (p, 10));
+
+  # Pauses and gives the option to quit.
+  s = input ("\nProgram paused. Press ENTER to continue or q to quit.\n", "s");
+  if s == "q"
+    break;
+  endif
+
+endfor
