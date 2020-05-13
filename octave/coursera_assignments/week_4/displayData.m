@@ -68,7 +68,7 @@ function [h display_array] = displayData (X, ex_width)
   # Displays the image.
   h = imagesc (display_array, [-1 1]);
 
-  # Hides the axis.
+  # Hides the axes.
   axis image off
 
   drawnow;

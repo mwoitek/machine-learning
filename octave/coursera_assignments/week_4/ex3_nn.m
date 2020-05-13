@@ -25,14 +25,6 @@ clear;
 close all;
 clc
 
-# Sets a few parameters.
-# 20x20 Input images of digits.
-input_layer_size = 400;
-# 25 Hidden units.
-hidden_layer_size = 25;
-# 10 labels, from 1 to 10. We have mapped the digit 0 to label 10.
-num_labels = 10;
-
 fprintf ("Loading and visualizing data...\n");
 # The training data is stored in the arrays X and y.
 load ("ex3data1.mat");

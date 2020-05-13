@@ -28,11 +28,10 @@ clc
 fprintf ("Loading and visualizing data...\n");
 # The training data is stored in the arrays X and y.
 load ("ex3data1.mat");
-m = rows (X);
 
 # Randomly selects 100 data points and displays them.
-# Vector containing a random permutation of 1:m.
-rand_indices = randperm (m);
+# Vector containing a random permutation of 1:rows (X).
+rand_indices = randperm (rows (X));
 sel = X(rand_indices(1:100),:);
 displayData (sel);
 
@@ -40,13 +39,11 @@ fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
 
 fprintf ("\nTesting the function lrCostFunction...\n");
-
 theta_t = [-2; -1; 1; 2];
 X_t = [(ones (5, 1)) (reshape (1:15, 5, 3) / 10)];
 y_t = [1; 0; 1; 0; 1] >= 0.5;
 lambda_t = 3;
 [J grad] = lrCostFunction (theta_t, X_t, y_t, lambda_t);
-
 fprintf ("\nCost: %.6f\n", J);
 fprintf ("Expected cost: 2.534819\n");
 fprintf ("Gradient:\n");
