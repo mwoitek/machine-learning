@@ -21,17 +21,16 @@
 # ones). After the normalization, the mean value of each feature is 0, and the
 # corresponding standard deviation is 1.
 function [X_norm mu sigma] = featureNormalize (X)
-  cols = columns (X);
-  X_norm = zeros (rows (X), cols);
-  mu = zeros (1, cols);
-  sigma = zeros (1, cols);
-  for i = 1:cols
-    temp = X(:,i);
-    # For each feature, computes the mean value.
-    mu(i) = mean (temp);
-    # For each feature, computes the standard deviation.
-    sigma(i) = std (temp);
-    # Normalizes each feature.
-    X_norm(:,i) = (temp - mu(i)) / sigma(i);
-  endfor
+
+  # For each feature, computes the mean value. The results are stored in a row
+  # vector.
+  mu = mean (X, 1);
+
+  # For each feature, computes the standard deviation. The results are stored
+  # in a row vector.
+  sigma = std (X, 1);
+
+  # Normalizes each feature.
+  X_norm = (X - mu) ./ sigma;
+
 endfunction
