@@ -21,16 +21,11 @@
 # K-Means Clustering. This file isn't just a copy of the one provided to us. I
 # changed the original code considerably.
 
-# pca.m
-# projectData.m
-# recoverData.m
-
 clear;
 close all;
 clc
 
-# K-MEANS CLUSTERING. We have divided the learning algorithm into two
-# functions, findClosestCentroids and computeCentroids.
+# K-MEANS CLUSTERING.
 
 fprintf ("Finding the closest centroids...\n");
 
