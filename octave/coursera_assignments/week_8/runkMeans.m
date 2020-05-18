@@ -43,6 +43,8 @@ function [centroids idx] = runkMeans (X, initial_centroids, max_iters, ...
   centroids = initial_centroids;
   previous_centroids = centroids;
 
+  fprintf ("\n");
+
   # Runs the K-means algorithm.
   for i = 1:max_iters
 

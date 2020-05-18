@@ -77,7 +77,7 @@ max_iters = 10;
 # Runs the K-means algorithm. The "true" at the end tells our function to plot
 # the progress of the algorithm.
 [centroids idx] = runkMeans (X, initial_centroids, max_iters, true);
-fprintf ("\nK-means done.\n");
+fprintf ("K-means done.\n");
 
 fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
@@ -137,6 +137,7 @@ X_recovered = centroids(idx,:);
 X_recovered = reshape (X_recovered, img_size(1), img_size(2), 3);
 
 # Displays the original image.
+figure;
 subplot (1, 2, 1);
 imagesc (A);
 title ("Original image");
