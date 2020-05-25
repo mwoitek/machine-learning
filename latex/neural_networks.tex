@@ -425,4 +425,121 @@
 
 \end{frame}
 
+\section[]{Learning}
+
+\begin{frame}{Learning}
+
+\begin{block}{Classification Problems}
+\begin{itemize}
+\justifying
+\item Next, we apply the ideas presented so far to solve \textit{classification
+  problems}.
+\item Specifically, we want to solve multi-class classification problems.
+\item We denote the number of classes by $K$ ($K\in\mathbb{N}$, $K>1$).
+\item This quantity must be equal to the number of units in the output layer,
+  i.e., $K=n_{L}$.
+\item To proceed, we can adopt an approach that generalizes \textit{logistic
+  regression}.
+\item Then we begin by setting every activation function $g^{\left(j\right)}$
+  equal to the sigmoid function $h$, Eq.~(\ref{eq:defn_sigm}).
+\item This means that the propagation of the input values is implemented with
+  the aid of the following mappings:
+  \begin{equation}
+  \mathbf{a}^{\left(j\right)}=f^{\left(j\right)}\left(\mathbf{a}^{\left(j-1\right)}\right)=\begin{bmatrix}1\\
+  h\left(\Theta^{\left(j-1\right)}\mathbf{a}^{\left(j-1\right)}\right)
+  \end{bmatrix}\quad\left(j\neq L\right)
+  \end{equation}
+  and
+  \begin{equation}
+  \mathbf{a}^{\left(L\right)}=f^{\left(L\right)}\left(\mathbf{a}^{\left(L-1\right)}\right)=h\left(\Theta^{\left(L-1\right)}\mathbf{a}^{\left(L-1\right)}\right).
+  \end{equation}
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Learning}
+
+\begin{block}{Classification Problems}
+\begin{itemize}
+\justifying
+\item As before, the input values in $\mathbf{x}$ are propagated with the aid
+  of $F$, and we obtain the output vector $F\left(\mathbf{x}\right)$.
+\item This vector is $K$-dimensional, i.e.,
+  $F\left(\mathbf{x}\right)\in\mathbb{R}^{K}$.
+\item It's convenient to introduce the following notation for the components of
+  this vector:
+  $F_{k}\left(\mathbf{x}\right)=\left[F\left(\mathbf{x}\right)\right]_{k}$,
+  where $k=1,\ldots,K$.
+\end{itemize}
+\end{block}
+
+\begin{block}{Cost Function}
+\begin{itemize}
+\justifying
+\item To continue, we assume our training set has $m$ examples.
+\item The $i$-th training example is denoted as follows:
+  $\left(\mathbf{x}^{\left(i\right)},\mathbf{y}^{\left(i\right)}\right)$.
+\item It's important to notice that, unlike in logistic regression, the class
+  of the $i$-th training example is specified through a $K$-dimensional vector
+  $\mathbf{y}^{\left(i\right)}$.
+\item If the $i$-th example belongs to the $k$-th class, then almost every
+  component of $\mathbf{y}^{\left(i\right)}$ is zero. The only exception is the
+  $k$-th component, which is equal to 1.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Learning}
+
+\begin{block}{Cost Function}
+\begin{itemize}
+\justifying
+\item Finally, we are in position to write down the formula for the
+  \textit{cost function} $J$.
+\item We will express $J$ as a sum of two terms:
+  $J\left(\Theta\right)=J_{0}\left(\Theta\right)+J_{\mathrm{r}}\left(\Theta\right)$,
+  where $\Theta$ represents the totality of the weights in the matrices
+  $\Theta^{\left(1\right)},\ldots,\Theta^{\left(L-1\right)}$.
+\item The first term of $J\left(\Theta\right)$ is given by
+  \begin{equation}
+  J_{0}\left(\Theta\right)=-\frac{1}{m}\sum_{i=1}^{m}\sum_{k=1}^{K}\left\{y_{k}^{\left(i\right)}\ln\left[F_{k}\left(\mathbf{x}^{\left(i\right)}\right)\right]+\left(1-y_{k}^{\left(i\right)}\right)\ln\left[1-F_{k}\left(\mathbf{x}^{\left(i\right)}\right)\right]\right\}.
+  \end{equation}
+\item The first summation on the RHS of this equation is over the training
+  examples.
+\item The second sum is for taking into account the contributions from all $K$
+  components of the vectors $\mathbf{y}^{\left(i\right)}$ and
+  $F\left(\mathbf{x}^{\left(i\right)}\right)$.
+\item This term is a generalization of the cost function for (unregularized)
+  logistic regression.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Learning}
+
+\begin{block}{Cost Function}
+\begin{itemize}
+\justifying
+\item The second term of $J\left(\Theta\right)$ is a \textit{regularization
+  term}. It can be expressed as follows:
+  \begin{equation}
+  J_{\mathrm{r}}\left(\Theta\right)=\frac{\lambda}{2m}\sum_{l=1}^{L-1}\sum_{i=1}^{n_{l}}\sum_{j=1}^{n_{l+1}}\left(\Theta_{ji}^{\left(l\right)}\right)^{2},
+  \end{equation}
+  where $\lambda$ is the \textit{regularization parameter}.
+\item The first summation on the RHS of this equation is over the layers of the
+  neural network. Almost every layer makes a contribution. The only exception
+  is the output layer.
+\item The other two sums are for taking into account the contributions from the
+  different rows and columns of $\Theta^{\left(l\right)}$.
+\item Notice that the columns associated with the bias units don't contribute
+  to $J_{\mathrm{r}}\left(\Theta\right)$.
+\item This is similar to what we have for regularized logistic regression.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
 \end{document}
