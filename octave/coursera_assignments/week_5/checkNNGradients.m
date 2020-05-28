@@ -71,7 +71,7 @@ function checkNNGradients (lambda)
   fprintf ("Right column: Gradient computed with nnCostFunction.\n");
 
   # Computes the relative difference between the two gradients. If you have a
-  # correct implementation, and used EPSILON = 0.0001 in
+  # correct implementation, and used epsilon = 0.0001 in
   # computeNumericalGradient, then diff should be less than 1e-9.
   diff = norm (numgrad - grad) / norm (numgrad + grad);
   fprintf (["\nIf the backpropagation algorithm is correct, then the " ...

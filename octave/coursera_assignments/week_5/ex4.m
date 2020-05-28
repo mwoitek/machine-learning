@@ -59,14 +59,17 @@ nn_params = [Theta1(:); Theta2(:)];
 
 fprintf ("\nFeedforward using the neural network...\n");
 
+fprintf ("\nChecking the cost function without regularization...\n");
+
 # Weight regularization parameter (Here we set this to 0).
 lambda = 0;
 
 J = nnCostFunction (nn_params, input_layer_size, hidden_layer_size, num_labels, ...
                     X, y, lambda);
 
-fprintf ("\nCost at parameters loaded from ex4weights: %.6f\n", J);
-fprintf ("Expected cost: 0.287629\n");
+fprintf (["\nCost at parameters loaded from ex4weights (with lambda = %f): " ...
+          "%.6f\n"], lambda, J);
+fprintf ("Expected cost (for lambda = 0): 0.287629\n");
 
 fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
@@ -79,14 +82,17 @@ lambda = 1;
 J = nnCostFunction (nn_params, input_layer_size, hidden_layer_size, num_labels, ...
                     X, y, lambda);
 
-fprintf ("\nCost at parameters loaded from ex4weights: %.6f\n", J);
-fprintf ("Expected cost: 0.383770\n");
+fprintf (["\nCost at parameters loaded from ex4weights (with lambda = %f): " ...
+          "%.6f\n"], lambda, J);
+fprintf ("Expected cost (for lambda = 1): 0.383770\n");
 
 fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
 
 fprintf ("\nEvaluating the gradient (derivative) of the sigmoid function...\n");
+
 g = sigmoidGradient ([-1 -0.5 0 0.5 1]);
+
 fprintf ("\nGradient (derivative) evaluated at [-1 -0.5 0 0.5 1]:\n");
 fprintf ("%f\n", g);
 
@@ -95,19 +101,22 @@ pause;
 
 fprintf ("\nChecking the backpropagation algorithm...\n");
 
+fprintf ("\nChecking the gradient without regularization...\n");
+
 # Checks the gradient by running checkNNGradients.
 checkNNGradients;
 
 fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
 
-fprintf ("\nChecking the backpropagation algorithm (with regularization)...\n");
+fprintf ("\nChecking the gradient with regularization...\n");
 
 # Checks the gradient by running checkNNGradients.
 lambda = 3;
 checkNNGradients (lambda);
 
-# Also checks by computing the cost function.
+fprintf ("\nChecking (again) the cost function with regularization...\n");
+
 J = nnCostFunction (nn_params, input_layer_size, hidden_layer_size, num_labels, ...
                     X, y, lambda);
 
@@ -119,8 +128,10 @@ fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
 
 fprintf ("\nRandomly initializing the neural network parameters...\n");
+
 initial_Theta1 = randInitializeWeights (input_layer_size, hidden_layer_size);
 initial_Theta2 = randInitializeWeights (hidden_layer_size, num_labels);
+
 # Unrolls the parameters. In other words, stores all of the elements of the
 # matrices initial_Theta1 and initial_Theta2 in a single vector.
 initial_nn_params = [initial_Theta1(:); initial_Theta2(:)];
@@ -135,16 +146,16 @@ lambda = 1;
 costFunction = @(p) nnCostFunction (p, input_layer_size, hidden_layer_size, ...
                                     num_labels, X, y, lambda);
 
-# Sets the options for fmincg. Change MaxIter to a larger value to see how more
+# Sets the options for fmincg. Increase the value of MaxIter to see how more
 # iterations help.
 options = optimset ("MaxIter", 50);
 
 # Runs fmincg to obtain the optimal parameters.
-[nn_params cost] = fmincg (costFunction, initial_nn_params, options);
+nn_params = fmincg (costFunction, initial_nn_params, options);
 
-# Constructs the weight matrices Theta1 and Theta2 from the "unrolled"
-# vector nn_params. A few helper variables are introduced to make the code
-# more readable.
+# Constructs the weight matrices Theta1 and Theta2 from the "unrolled" vector
+# nn_params. A few helper variables are introduced to make the code more
+# readable.
 
 # Variables related to the dimensions of Theta1 and Theta2.
 rows_Theta1 = hidden_layer_size;
@@ -160,14 +171,43 @@ Theta2 = reshape (nn_params((elem_Theta1 + 1):end), rows_Theta2, cols_Theta2);
 fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
 
-fprintf ("\nVisualizing the neural network...\n");
+fprintf ("\nVisualizing the hidden layer...\n");
+
 displayData (Theta1(:,2:end));
 
 fprintf ("\nProgram paused. Press ENTER to continue.\n");
 pause;
 
+fprintf ("\nPredicting the labels...\n");
+
 # Uses the neural network to predict the labels of the training set. It also
 # computes and displays the training accuracy.
 p = predict (Theta1, Theta2, X);
 train_acc = 100 * mean (double (p == y));
-fprintf ("\nTraining accuracy: %.1f %%\n", train_acc);
+fprintf ("\nTraining accuracy: %.2f %%\n", train_acc);
+
+fprintf ("\nProgram paused. Press ENTER to continue.\n\n");
+pause;
+
+# To give us an idea of the network's output, we can run through the examples
+# one at a time to see what the network is predicting.
+
+# Randomly permutes the examples.
+rp = randperm (m);
+
+for i = 1:m
+
+  fprintf ("Displaying example image %d\n", i);
+  temp = X(rp(i),:);
+  displayData (temp);
+
+  p = predict (Theta1, Theta2, temp);
+  fprintf ("Neural network prediction: %d (digit %d)\n", p, mod (p, 10));
+
+  # Pauses and gives the option to quit.
+  s = input ("\nProgram paused. Press ENTER to continue or q to quit.\n", "s");
+  if s == "q"
+    break;
+  endif
+
+endfor
