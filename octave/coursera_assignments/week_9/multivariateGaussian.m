@@ -26,7 +26,9 @@
 # covariance matrix. If sigma2 is a vector, then sigma2(i) is the variance of
 # the i-th feature. In this case, sigma2 is converted into a diagonal
 # covariance matrix. The returned vector p is a m-dimensional column vector.
-# p(i) is the probability density function for the i-th example.
+# p(i) is the probability density function for the i-th example. This file
+# isn't just a copy of the one provided to us. I changed the original code
+# considerably.
 function p = multivariateGaussian (X, mu, sigma2)
 
   # Checks if sigma2 is a vector. If necessary, converts sigma2 into a diagonal
